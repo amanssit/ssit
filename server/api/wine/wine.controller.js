@@ -19,7 +19,15 @@ exports.Search = function (req, res) {
 
 // Get a  wine by ID
 exports.GetByID = function (req, res) {
-  res.json([]);
+  var WineID = req.params.id;
+  GetAllWines(function(err,data){
+    if(!err){
+      var selectedWine = _.filter(data,function(wine){
+        return wine.WineID == WineID
+      })
+      res.json(selectedWine);
+    }
+  })
 };
 
 // Add a wine
