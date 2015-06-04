@@ -1,11 +1,15 @@
 'use strict';
 
 var _ = require('lodash');
-
+var  GetAllWines = require("./wine.model")
 
 // Get list of wines
 exports.Index = function (req, res) {
-  res.json([]);
+  GetAllWines(function(err,data){
+    if(!err)
+      res.json(data);
+  })
+
 };
 
 // Search wines
